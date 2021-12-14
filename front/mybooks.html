@@ -1,0 +1,254 @@
+<!--
+SPDX-License-Identifier: Apache License 2.0
+Copyright 2021 Ra
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pyra</title>
+    <link rel="shortcut icon" type="image/jpg" href="./images/logo.png" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" language="javascript" src="./js/jquery.min.js"></script>
+    <script src="./js/web3.min.js"></script>
+</head>
+
+<body>
+    <div id="address-container" class="d-flex justify-content-center p-2 mb-0 flex-row">
+        <p id="address" class="mb-0 px-1">contract address : </p>
+		<p class="mb-0 px-1"> 0xed921603b47f7A81ED3aC314Cf195A16c5A2B0A9 </p>
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid justify-content-start">
+            <ul class="pl-0 list-unstyled d-flex mb-2 mb-lg-0 flex-wrap">
+
+                <li class="nav-item me-3">
+                    <a href="/#" class="nav-link myLinkColor d-flex align-items-center">
+                        <img src="./images/logo.png" class="img-fluid me-2" alt="background">
+                    </a>
+                </li>
+
+                <li class="nav-item me-3">
+                    <a class="nav-link myLinkColor" href="/#annoncement">Annoncement</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link myLinkColor" href="/#concept">Concept</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link myLinkColor" href="/#buy">Buy Book</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link myLinkColor" href="/mybooks.html">My Books</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div id="background">
+    </div>
+
+    <div class="mt-2 pt-2 pb-4 text-center bkg-sand">
+        <h1 class="mb-3">My Books</h1>
+
+        <p class="mx-auto w-75">Here you can find your books. Share your book's id to earn ! </p>
+
+        <button id="connectButton" class="btn btn-primary mb-4">Connect with Metamask</button>
+
+        <div id="refreshContainer" class="mb-3">
+        </div>
+
+        <div id="booksContainer" class="d-flex flex-wrap justify-content-center mx-4">
+        </div>
+        </a>
+    </div>
+
+
+    <footer class="py-3 text-center">
+        <div>
+            <div class="d-flex justify-content-center align-items-center">
+                <a href="/terms.html" class="mx-1 text-decoration-none">Terms of Service</a>
+                <p class="mb-0"> | </p>
+                <a href="mailto:contact@pyras-books.xyz" class="mx-1 text-decoration-none">contact@pyras-books.xyz</a>
+            </div>
+
+            <p class=" mt-2 ">
+                Join our Discord server and don't miss any annoncements !
+            </p>
+            <a href="https://discord.gg/G54dZuvd3d" target="_blank" class="text-center text-decoration-none">
+                <img src="./images/discord.png" alt="" id="discordLogo" />
+            </a>
+            <p class="mt-2  mb-0">
+                Copyright © Pyra
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        let accounts;
+        const web3js = new Web3(Web3.givenProvider);
+        let pyraContract;
+        const pyraContractAddress = "0xed921603b47f7A81ED3aC314Cf195A16c5A2B0A9";
+        let abi;
+
+        const connectButton = document.getElementById("connectButton");
+
+
+        // Load of the page
+        window.addEventListener('load', function () {
+            metaMaskClientCheck();
+            startApp();
+        });
+
+
+        // Metamask
+
+        function isMetaMaskInstalled() {
+            const { ethereum } = window;
+            return Boolean(ethereum && ethereum.isMetaMask);
+        }
+
+        function onClickInstall() {
+            window.open("https://metamask.io/", '_blank');
+            connectButton.innerText = 'Pelase refresh page after install';
+            connectButton.disabled = true;
+        };
+
+        const onClickConnect = async () => {
+            connectButton.disabled = true;
+            connectButton.innerText = 'Connectting... please approve connection on Metamask';
+            try {
+                await ethereum.request({ method: 'eth_requestAccounts' });
+                accounts = await ethereum.request({ method: 'eth_accounts' });
+                fillBooks();
+                connectButton.style.display = "none";
+
+            } catch (error) {
+                console.error(error);
+
+                // double ask on connect
+                if (error.code == -32002) {
+                    console.error(error.message);
+                    connectButton.innerText = "Connection ever asked, please approve connection on Metamask";
+                }
+
+                // User rejected the request
+                if (error.code == 4001) {
+                    console.error(error.message);
+                    connectButton.disabled = false;
+                    connectButton.innerText = "Connect with Metamask";
+
+                };
+            }
+        };
+
+
+        function metaMaskClientCheck() {
+            if (!isMetaMaskInstalled()) {
+                connectButton.innerText = "Click here to install MetaMask !";
+                connectButton.onclick = onClickInstall;
+                connectButton.disabled = false;
+            } else {
+                connectButton.innerText = "Connect with Metamask";
+                connectButton.onclick = onClickConnect;
+                connectButton.disabled = false;
+            }
+        }
+
+        // Contract 
+
+        function fillBooks() {
+            $("#booksContainer").empty();
+
+            let booksId = [];
+            pyraContract.methods.getBooksByOwner(accounts[0]).call()
+                .then(function (result) {
+                    booksId = result;
+
+                    if (booksId.length == []) {
+                        $("#booksContainer").append(`
+                            <div class="mb-3 myBooks myAnnonce pt-2 pb-0">
+                                <p class="p-0"> Sorry, you don't have book. Try to refresh? <p>
+                                    <button onclick="fillBooks()" class="btn btn-primary">Refresh</button>
+                            </div>`);
+                        return;
+                    }
+
+                    $("#refreshContainer").empty();
+                    $("#refreshContainer").append('<button onclick="fillBooks()" class="btn btn-primary">Refresh</button>');
+
+                    for (let i = 0; i < result.length; ++i) {
+                        pyraContract.methods.getBookById(booksId[i]).call()
+                            .then(function (result) {
+
+                                if (result[1] == 777777777777777) {
+                                    $("#booksContainer").append(`
+                                        <div class="me-4 mb-3 myBooks myAnnonce">
+                                            <img src="./images/book2.png" alt="" class="img-fluid w-50 myRounded mt-3 mb-2" />
+                                            <div class="text-dark p-2">
+                                                <p class="mb-2 myTextAnnonce"> Id : ` + result[0] + `</p>
+                                                <p> Prev. Id : ` + result[1] + ` <br>
+                                                    Childrends : ` + parseInt(result[2], 16) + `<br>
+                                                    Profit : ` + result[3] / 1000000000000000000 + ` USDT<br>
+                                                </p>
+                                            </div>
+                                        </div>`);
+                                } else {
+                                    $("#booksContainer").append(`
+                                        <div class="me-4 mb-3 myBooks myAnnonce">
+                                            <img src="./images/book1.png" alt="" class="img-fluid w-50 myRounded mt-3 mb-2" />
+                                            <div class="text-dark p-2">
+                                                <p class="mb-2 myTextAnnonce"> Id : ` + result[0] + `</p>
+                                                <p> Prev. Id : ` + result[1] + ` <br>
+                                                    Childrends : ` + parseInt(result[2], 16) + `<br>
+                                                    Profit : ` + result[3] / 1000000000000000000 + ` USDT<br>
+                                                </p>
+                                            </div>
+                                        </div>`);
+                                }
+                            })
+                            .catch(function (result) {
+                                console.error(result);
+                            }
+                            );
+                    }
+                }
+                );
+        }
+
+        function startApp() {
+
+            let json = $.getJSON("./abi/Pyra.json", () => {
+                abi = json.responseJSON["abi"];
+                json = $.getJSON("./abi/Management.json", () => {
+                    abi = abi.concat(json.responseJSON["abi"]);
+                    json = $.getJSON("./abi/BookFactory.json", () => {
+                        abi = abi.concat(json.responseJSON["abi"]);
+                        pyraContract = new web3js.eth.Contract(abi, pyraContractAddress);
+                    });
+                });
+            });
+
+        }
+
+    </script>
+</body>
+
+</html>

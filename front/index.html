@@ -1,0 +1,541 @@
+<!--
+SPDX-License-Identifier: Apache License 2.0
+Copyright 2021 Ra
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Pyra</title>
+	<link rel="shortcut icon" type="image/jpg" href="./images/logo.png" />
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link href="./css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" language="javascript" src="./js/jquery.min.js"></script>
+	<script src="./js/web3.min.js"></script>
+</head>
+
+<body>
+	<div id="address-container" class="d-flex justify-content-center p-2 mb-0 flex-row">
+		<p id="address" class="mb-0 px-1">Pyra contract address : </p>
+		<p class="mb-0 px-1"> 0xed921603b47f7A81ED3aC314Cf195A16c5A2B0A9 </p>
+	</div>
+
+	<nav class="navbar navbar-expand-lg navbar-light">
+		<div class="container-fluid justify-content-start">
+			<ul class="pl-0 list-unstyled d-flex mb-2 mb-lg-0 flex-wrap">
+
+				<li class="nav-item me-3">
+					<a href="/#" class="nav-link myLinkColor d-flex align-items-center">
+						<img src="./images/logo.png" class="img-fluid me-2" alt="background">
+					</a>
+				</li>
+
+				<li class="nav-item me-3">
+					<a class="nav-link myLinkColor" href="#annoncement">Annoncement</a>
+				</li>
+				<li class="nav-item me-3">
+					<a class="nav-link myLinkColor" href="#concept">Concept</a>
+				</li>
+				<li class="nav-item me-3">
+					<a class="nav-link myLinkColor" href="#buy">Buy Book</a>
+				</li>
+				<li class="nav-item me-3">
+					<a class="nav-link myLinkColor" href="/mybooks.html">My Books</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<div id="background">
+	</div>
+
+	<div id="annoncement" class="mt-2 pt-2 pb-4 text-center bkg-sand">
+		<h1 class="mb-3">Annoncements</h1>
+		<div class="d-flex flex-no-wrap justify-content-center mx-4">
+			<div class="me-4 myAnnonce">
+				<a href="#buy" class="text-center text-decoration-none">
+					<img src="./images/annonce3.jpg" alt="" class="img-fluid myRounded" />
+					<div class="text-dark p-2">
+						<p class="mb-2 myTextAnnonce">Root books are ready</p>
+						<p> These specials books are created by RA, our main guide, with cool advantages !</p>
+					</div>
+				</a>
+			</div>
+
+			<div class="me-4 myAnnonce">
+				<a href="https://discord.gg/G54dZuvd3d" target="_blank" class="text-center text-decoration-none">
+					<img src="./images/annonce2.jpg" alt="" class="img-fluid myRounded" />
+					<div class="text-dark p-2">
+						<p class="mb-2 myTextAnnonce">Join our discord server</p>
+						<p>Find orthers guide, meet your friends, share with staff and help new explorers</p>
+					</div>
+				</a>
+			</div>
+
+			<div class="me-4 myAnnonce">
+				<a href="#buy" class="text-center text-decoration-none">
+					<img src="./images/annonce1.jpg" alt="" class="img-fluid myRounded" />
+					<div class="text-dark p-2">
+						<p class="mb-2 myTextAnnonce">Pyra is now launched ! </p>
+						<p> You can now being a pioneer and start creating books to help new members </p>
+
+					</div>
+
+				</a>
+			</div>
+		</div>
+		</a>
+	</div>
+
+	<div id="concept" class="text-center mt-2 pt-2 pb-4 px-4">
+		<h1 class="mb-3">Pyra concept</h1>
+
+		<div class="d-flex justify-content-center">
+			<div class="w-25">
+				<img src="./images/eye.png" alt="" class="img-fluid myEye" />
+			</div>
+
+			<div>
+				<p class="mx-auto w-75">Pyra is an investment game in the desert universe. <br>
+					Oh shit, you will tell me, another pyramid, well... no. <br>
+					We have been personally scammed, too many times, <br>
+					so we decided to create a balanced system that allows everyone to win the game ! <br>
+					Check our whitepaper and you will discover desert secrets...
+				</p>
+				<a href="/whitepaper.html" target="_blank" class="btn btn-primary">Read our WhitePaper now !</a>
+			</div>
+
+			<div class="w-25">
+				<img src="./images/eye.png" alt="" class="img-fluid myEye" />
+			</div>
+		</div>
+	</div>
+
+	<div id="buy" class="mt-2 pt-2 pb-4 px-4 bkg-sand">
+		<h1 class="text-center mb-3">Book sales</h1>
+
+		<div class="d-flex justify-content-center">
+			<div class="ms-4 w-25 text-center">
+				<img src="./images/trader.png" style="border-radius: 50px;" alt="" class="ms-auto img-fluid" />
+			</div>
+
+			<div class="w-75">
+				<div class="mx-auto w-75">
+					<p>Welcome young explorer, to survive in this area, you need a guide book ! <br>
+						You can buy a book if you have a friend here, or find a random guide. If you are fast, you can
+						buy a root book, with
+						several
+						advantages !</p>
+				</div>
+
+				<div id="buyContainer" class="mx-auto w-75 mt-2 p-4">
+
+					<div id="metaContent" class="text-center my-2">
+						<button id="connectButton" class="btn btn-primary mb-4">Connect with Metamask</button> <br>
+						<img src="./images/meta.png" alt="" class="img-fluid w-25" />
+					</div>
+
+					<div id="buyContent" style="display: none;">
+						<div class="nav nav-tabs mb-3 myUnderline0">
+							<button onclick="disp1()" id="friendButton"
+								class="nav-link nav-item flex-grow-1 text-dark mySelected">Friend book</button>
+							<button onclick="disp2()" id="rootButton"
+								class="nav-link nav-item flex-grow-1 text-dark">Root
+								book</button>
+						</div>
+
+						<div class="tab-content">
+							<div id="1" class="tab-pane fade show active">
+								<div class="d-flex justify-content-center align-items-center mb-2">
+									<img src="./images/book1.png" alt="" class="me-2 myBook" />
+									<p class="ms-4">This is a simple book, guided by a friend. <br>
+										Enter his book id to join de adventure ! <br>
+										If you don't have a friend, maybe you can find one in
+										<a href="https://discord.gg/G54dZuvd3d" target="_blank" class="myLinkColor">our
+											discord server?</a>
+										<br>
+										Once you have bought your book, you can find them
+										<a href="/mybooks" class="myLinkColor">on this page.</a> <br><br>
+										Total books sold : <a id=booksSold></a>
+									</p>
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">Enter the id of a friend's
+										book
+										!</label>
+									<div class="d-flex">
+										<input id="bookId" type="number" class="form-control me-2">
+										<button onclick="searchBook()" class="btn btn-primary">Search</button>
+									</div>
+									<div id="invalidSearch" class="text-danger mt-1" style="display: none;">
+										Book not found.
+									</div>
+
+									<div class="form-text">
+										<a>Don't know a friend? </a>
+										<a href="https://discord.gg/G54dZuvd3d" target="_blank"
+											class="hovB form-text">Join our discord server</a>
+									</div>
+								</div>
+
+								<div id="searchResultContainer" class="d-flex justify-content-around"
+									style="display: none !important;">
+									<div>
+										<p class="mb-1"> Book informations :</p>
+										<p id="searchResult" class="ms-3">
+										</p>
+									</div>
+
+									<div class="d-flex">
+										<div class="me-2">
+											<label for="exampleInputEmail1" class="form-label">Number of
+												books you want
+												to buy
+											</label>
+											<input id="quantity" type="number" class="form-control me-2">
+											<div id="invalidQuantity1" class="text-danger mt-1" style="display: none;">
+												Invalid quantity
+											</div>
+										</div>
+										<button id="buyButton" onclick="buyBook()"
+											class="btn btn-primary my-auto">Buy</button>
+									</div>
+
+								</div>
+							</div>
+
+							<div id="2" class="tab-pane fade">
+								<div class="d-flex justify-content-center align-items-center mb-2">
+									<img src="./images/book2.png" alt="" class="me-2 myBook" />
+									<p class="ms-4">You can buy a special book, your book will be writed by our
+										main guide : RA.<br>
+										RA doesn't have guide, so your book will be 39% off ! <br>
+										Once you have bought your book, you can find them
+										<a href="#" class="myLinkColor">on this page.</a> <br><br>
+										Books avaiable : <a id=rootBooksAvailable></a>
+									</p>
+								</div>
+
+								<div class="d-flex w-75 justify-content-center mx-auto">
+
+									<div class=" me-3">
+										<label class="form-label">Number of
+											books you want
+											to buy
+										</label>
+										<input id="quantityRoot" type="number" class="form-control me-2">
+										<div id="invalidQuantity2" class="text-danger mt-1" style="display: none;">
+											Invalid quantity
+										</div>
+									</div>
+									<button id="buyRootButton" onclick="buyOnRootBook()"
+										class="btn btn-primary my-auto">Buy on root
+										book</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<footer class="py-3 text-center">
+		<div>
+			<div class="d-flex justify-content-center align-items-center">
+				<a href="/terms.html" class="mx-1 text-decoration-none">Terms of Service</a>
+				<p class="mb-0"> | </p>
+				<a href="mailto:contact@pyras-books.xyz" class="mx-1 text-decoration-none">contact@pyras-books.xyz</a>
+			</div>
+
+			<p class=" mt-2 ">
+				Join our Discord server and don't miss any annoncements !
+			</p>
+			<a href="https://discord.gg/G54dZuvd3d" target="_blank">
+				<img src="./images/discord.png" alt="" id="discordLogo" />
+			</a>
+			<p class="mt-2  mb-0">
+				Copyright © Pyra
+			</p>
+		</div>
+	</footer>
+
+	<script>
+		let accounts;
+		const web3js = new Web3(Web3.givenProvider);
+		let pyraContract;
+		const pyraContractAddress = "0xed921603b47f7A81ED3aC314Cf195A16c5A2B0A9"; 
+		let abiPyra;
+
+		let tokenContract;
+		const tokenContractAddress = "0x55d398326f99059ff775485246999027b3197955";
+		let abiToken;
+
+		let bookPrice = 10**20;
+
+		const connectButton = document.getElementById("connectButton");
+
+
+		// Load of the page
+		window.addEventListener('load', function () {
+			metaMaskClientCheck();
+			startApp();
+		});
+
+
+		// Metamask
+
+		function isMetaMaskInstalled() {
+			const { ethereum } = window;
+			return Boolean(ethereum && ethereum.isMetaMask);
+		}
+
+		function onClickInstall() {
+			window.open("https://metamask.io/", '_blank');
+			connectButton.innerText = 'Pelase refresh page after install';
+			connectButton.disabled = true;
+		};
+
+		const onClickConnect = async () => {
+			connectButton.disabled = true;
+			connectButton.innerText = 'Connectting... please approve connection on Metamask';
+			try {
+				await ethereum.request({ method: 'eth_requestAccounts' });
+				document.getElementById("metaContent").style.display = "none";
+				accounts = await ethereum.request({ method: 'eth_accounts' });
+				document.getElementById("buyContent").style.display = "inline";
+			} catch (error) {
+				console.error(error);
+
+				// double ask on connect
+				if (error.code == -32002) {
+					console.error(error.message);
+					connectButton.innerText = "Connection ever asked, please approve connection on Metamask";
+				}
+
+				// User rejected the request
+				if (error.code == 4001) {
+					console.error(error.message);
+					connectButton.disabled = false;
+					connectButton.innerText = "Connect with Metamask";
+
+				};
+			}
+		};
+
+
+		function metaMaskClientCheck() {
+			if (!isMetaMaskInstalled()) {
+				connectButton.innerText = "Click here to install MetaMask !";
+				connectButton.onclick = onClickInstall;
+				connectButton.disabled = false;
+			} else {
+				connectButton.innerText = "Connect with Metamask";
+				connectButton.onclick = onClickConnect;
+				connectButton.disabled = false;
+			}
+		}
+
+		// Contract 
+
+		function startApp() {
+
+			let json = $.getJSON("./abi/Pyra.json", () => {
+				abiPyra = json.responseJSON["abi"];
+				json = $.getJSON("./abi/Management.json", () => {
+					abiPyra = abiPyra.concat(json.responseJSON["abi"]);
+					json = $.getJSON("./abi/BookFactory.json", () => {
+						abiPyra = abiPyra.concat(json.responseJSON["abi"]);
+						pyraContract = new web3js.eth.Contract(abiPyra, pyraContractAddress);
+						updateData();
+					});
+				});
+			});
+
+			let json2 = $.getJSON("./abi/ERC20.json", () => {
+				abiToken = json2.responseJSON["abi"];
+				tokenContract = new web3js.eth.Contract(abiToken, tokenContractAddress);
+			});
+		}
+
+		function updateData() {
+			pyraContract.methods.getBookCount().call()
+				.then(function (result) {
+					$("#booksSold").empty();
+					$("#booksSold").append(result);
+				})
+				.catch(function (result) {
+					console.error(result);
+				});
+
+			let childs = 0;
+			pyraContract.methods.getBookById(777777777777777).call()
+				.then(function (result) {
+					childs = result[2]
+					pyraContract.methods.maxRootedBook().call()
+						.then(function (result) {
+							result -= childs
+							$("#rootBooksAvailable").empty();
+							$("#rootBooksAvailable").append(result);
+						})
+				})
+				.catch(function (error) {
+					console.error(error);
+				});
+		}
+
+		function getBookCount() {
+			pyraContract.methods.getBookCount().call()
+				.then(function (result) {
+					console.log("Books : " + result);
+				})
+				.catch(function (result) {
+					console.error(result);
+				});
+		}
+
+		function searchBook() {
+			let bookId = $("#bookId").val();
+
+			pyraContract.methods.getBookById(bookId.toString()).call()
+				.then(function (result) {
+					document.getElementById("invalidSearch").style.display = "none";
+
+					let prefixAddress = result[4].substring(0, 5);
+					let suffixAdress = result[4].substring(result[2].length - 5, result[2].length - 1);
+
+					$("#searchResultContainer").css("display", "inline");
+					$("#searchResult").empty();
+					$("#searchResult").append("Book id : " + bookId + "<br> Owner : " + prefixAddress + "..." + suffixAdress + "<br>");
+				})
+				.catch(function (error) {
+					console.error(error);
+					document.getElementById("invalidSearch").style.display = "block";
+				});
+
+		}
+
+		function buyBook() {
+			let quantity = $("#quantity").val();
+			let bookId = $("#bookId").val();
+
+			if (quantity <= 0) {
+				document.getElementById("invalidQuantity1").style.display = "block";
+				return;
+			}
+			document.getElementById("invalidQuantity1").style.display = "none";
+
+			let price = web3js.utils.toBN(bookPrice * quantity).toString();
+
+			$("#buyButton").text("Book is being bought \n please accept allowance and transaction on Metamask");
+			$("#buyButton").prop("disabled", true);
+
+			tokenContract.methods.approve(pyraContractAddress, price).send({ from: accounts[0] })
+				.then(function (result) {
+					pyraContract.methods.getBookById(bookId).call()
+						.then(function (result) {
+							document.getElementById("invalidSearch").style.display = "none";
+							pyraContract.methods.buyBook(bookId, quantity).send({ from: accounts[0] })
+								.then(function (result) {
+									updateData();
+									$("#buyButton").text("Buy");
+									$("#buyButton").prop("disabled", false);
+								});
+						})
+						.catch(function (error) {
+							console.error(error);
+							document.getElementById("invalidSearch").style.display = "block";
+						});
+				})
+				.catch(function (e) {
+					console.log(e)
+				});
+
+
+
+
+		}
+
+		function buyOnRootBook() {
+			let quantity = $("#quantityRoot").val();
+
+			if (quantity <= 0) {
+				document.getElementById("invalidQuantity2").style.display = "block";
+				return;
+			}
+			document.getElementById("invalidQuantity2").style.display = "none";
+
+			let price = web3js.utils.toBN(bookPrice * quantity).toString();
+
+			$("#buyRootButton").text("Book is being bought, accept allowance and transaction on Metamask");
+			$("#buyRootButton").prop("disabled", true);
+
+			tokenContract.methods.approve(pyraContractAddress, price).send({ from: accounts[0] })
+				.then(function (result) {
+					pyraContract.methods.buyBook(777777777777777, quantity).send({ from: accounts[0] })
+						.then(function (result) {
+							updateData();
+							$("#buyRootButton").text("Buy on root book");
+							$("#buyRootButton").prop("disabled", false);
+						})
+						.catch(function (error) {
+							console.error(error);
+						});
+				})
+				.catch(function (e) {
+					console.log(e)
+				});
+		}
+
+		// utils
+
+		function displayAddress() {
+			console.log(accounts);
+		}
+
+		function hideTab() {
+			friendButton
+			$('#friendButton').removeClass('mySelected');
+			$('#rootButton').removeClass('mySelected');
+			$('#1').removeClass('show');
+			$('#1').removeClass('active');
+			$('#2').removeClass('show');
+			$('#2').removeClass('active');
+		}
+
+		function disp1() {
+			hideTab();
+			$('#friendButton').addClass('mySelected');
+			$('#1').addClass('show');
+			$('#1').addClass('active');
+		}
+
+
+		function disp2() {
+			hideTab();
+			$('#rootButton').addClass('mySelected');
+			$('#2').addClass('show');
+			$('#2').addClass('active');
+		}
+
+	</script>
+</body>
+
+</html>

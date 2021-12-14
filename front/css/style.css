@@ -1,0 +1,155 @@
+/* SPDX-License-Identifier: Apache License 2.0
+Copyright 2021 Ra
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License. */
+
+
+@font-face {
+    font-family: "Oswald";
+    src:  url('../font/Oswald-Regular.ttf') format('woff');
+}
+
+@font-face {
+    font-family: "Gotham";
+    src:  url('../font/Gotham\ Bold.otf') format('woff');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff0d9 !important;
+    font-family: Gotham !important;
+}
+
+h1 {
+    font-family: Oswald !important;
+}
+
+#address-container {
+    background-color: #c87d55;
+    color: #e3c2a8;
+}
+
+nav {
+    background-color: #f6bc8c;
+    font-family: Oswald !important;
+    font-size: 30px;
+}
+
+.myLinkColor {
+    color: rgba(0,0,0,.55) !important;
+}
+
+#background {
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    background-position-y: center;
+    width: 100%;
+    min-height: 250px;
+}
+
+.bkg-sand {
+    background-image: url("../images/sand.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.myAnnonce {
+    background-color: #e1b150;
+    border-radius: 20px;
+    box-shadow: 0px 2px 5px gray;
+}
+
+.myTextAnnonce {
+    background-color: #f0c96c !important;
+    border-radius: 5px;
+}
+
+.myRounded {
+    border-radius: 20px 20px 0 0;
+}
+
+#concept {
+    background-color: #e8ca8c;
+    background-image: url("../images/wall.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.myEye {
+    max-height: 200px;
+}
+
+#buy {
+    background-color: #f6e7cd;
+    font-family: Gotham !important;
+}
+
+.myGuide {
+    max-height: 300px;
+}
+
+.myBook {
+    width: auto;
+    max-height: 150px;
+}
+
+#buyContainer {
+    background-color: #e1b150;
+    border-radius: 20px;
+    box-shadow: 0px 2px 5px gray;
+}
+
+.mySelected {
+    border-top: 2px solid    #f0c96c !important;
+    border-right: 2px solid    #f0c96c !important;
+    border-left: 2px solid    #f0c96c !important;
+    border-bottom: 0px solid    #f0c96c !important;
+}
+
+.myUnderline0 {
+    border-bottom: 2px solid    #f0c96c !important;
+}
+
+.mybtn {
+    background-color: #f0c96c !important;
+    border-radius: 20px !important;
+}
+
+footer {
+    background-color: #a5887a;
+    color: black;
+}
+
+footer a {
+    color: black;
+}
+
+footer a:hover {
+    color: #e18a47;
+}
+
+.hovB:hover {
+    color: black;
+}
+
+#discordLogo {
+    max-height: 80px;
+}
+
+
+/* Form mybooks page*/
+
+.myBooks {
+    width: 20% !important;
+}
